@@ -1,0 +1,50 @@
+# Algorithms
+#include<stdio.h>
+
+int Partition(int A[],int start,int end)
+{
+    int i,pivot,Pindex,temp;
+    pivot=A[end];
+    Pindex=start;
+    for(i=0;i<end;i++){
+        if(A[i]<pivot){
+            temp=A[i];
+            A[i]=A[Pindex];
+            A[Pindex]=temp;
+            Pindex++;
+        }
+    }
+    temp=A[Pindex];
+    A[Pindex]=A[end];
+    A[end]=temp;
+    return Pindex;
+
+}
+void QuickSort(int A[],int start,int end)
+{
+    int partitionIndex;
+    if(start<end){
+        partitionIndex=Partition(A,start,end);
+        QuickSort(A,start,partitionIndex-1);
+        QuickSort(A,partitionIndex+1,end);
+    }
+}
+
+int main()
+{
+int i,n;
+	printf("Enter the size of array:");
+	scanf("%d",&n);
+	int A[n];
+	printf("Enter the array elements:");
+	for(i=0;i<n;i++){
+	    scanf("%d",&A[i]);
+	}
+
+    QuickSort(A,0,n-1);
+
+    for(i=0;i<n;i++){
+        printf("%d ",A[i]);
+    }
+    return 0;
+}
