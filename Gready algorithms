@@ -1,0 +1,25 @@
+# Algorithms
+#include <stdio.h>
+
+int main(void) {
+	int amount,i,n;
+	printf("Enter the amount: ");
+	scanf("%d",&amount);
+	printf("Enter the coins you have:");
+	scanf("%d",&n);
+	int coin[n];
+	printf("Enter the coins you have:-");
+	for(i=0;i<n;i++){
+        scanf("%d",&coin[i]);
+	}
+	int number;
+	for(i=0;i<n;i++){
+	    if(coin[i]<=amount){
+	        number=amount/coin[i];
+	        printf("%d X $ %d\n",number,coin[i]);
+	        amount=amount-number*coin[i];
+
+	    }
+	}
+}
+//input coins should be in decreasing order//
